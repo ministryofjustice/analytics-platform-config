@@ -1,9 +1,9 @@
 # analytics-platform-config
 Encrypted configuration
 
-## Gitcrypt
+## Git-crypt
 
-This repo contains secrets stored with gitcrypt. These need decrypting before use. You need to have your GPG key added to this repo before you are able to do this.
+This repo contains secrets stored with git-crypt. These need decrypting before use. You need to have your GPG key added to this repo before you are able to do this.
 
 ### Adding someone's gpg key to this repo
 
