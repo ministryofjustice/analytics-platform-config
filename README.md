@@ -73,6 +73,8 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
 
 ### Rotating the master key 
 
+In order to rotate the master key, just run `remove-gpg-user.sh`. This will rotate the master key in `.git/git-crypt/keys/default` and re-encrypt the files with the new key. We then need to re-add the user gpg keys to the repo again.
+
 # removed
 0BC40E3E6462918D96DD1A68D5A4BCE161AC7DC8.gpg Olivier
 0EA8A07F3B7A2DEFFC6A0C15A676D53809D8E9E5.gpg Josh
@@ -99,3 +101,4 @@ B128BECB7499BC74D8E7E46B197EA2F3FAD89850.gpg analytics-platform-tech@digital.jus
 4A1EBAEBC0D7B1EB73C19D617D038E3B8AD145D9.gpg Andy L
 3882536CDAF2F100F615C48F57E38D4C4897ED56.gpg analytics-platform-tech@digital.justice.gov.uk
 89C83075908E8B349B0D26A90C16E8A4D0440FB4.gpg Robin
+
