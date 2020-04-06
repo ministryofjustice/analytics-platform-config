@@ -76,7 +76,7 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
 
 Run `ls -alh .git-crypt/keys/default/0`. Identify any keys you want to delete and add them to `keys.txt`
 
-Run `remove-gpg-keys.sh` to delete the keys for a list of users. This will remove the key from git and delete any previous git history for that specific key. Users can't be able to rollback to previous commits to get the key as there won't be a trace of the file anymore.
+Run `remove-gpg-keys.sh` to delete the keys for a list of users. This will remove the key from git and delete any previous git history for that specific key. Users cannot rollback to previous commits to retrieve the key as the previous commit history is deleted.
 
 GPG keys
 # removed
