@@ -2,8 +2,8 @@
 
 set -ex
 
-KEY_FILE=$PWD/keys.txt
 GPG_KEY=".git-crypt/keys/default/0/$key"
+KEY_FILE=$PWD/keys.txt
 
 while IFS= read -r key; do
     
