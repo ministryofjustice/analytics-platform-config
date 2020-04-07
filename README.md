@@ -71,7 +71,6 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
 
    If this fails, it might be because your gpg key requires a pass-phrase, but there is a problem with the pinentry-program. Check your gpg-agent daemon. I had to correct `~/.gnupg/gpg-agent.conf` to point to the correct `pinentry` binary, then killed the gpg-agent process and restarted it with: `gpg-agent --daemon /bin/sh`.
 
-
 ### Remove gpg keys for old users
 
 Run `ls -alh .git-crypt/keys/default/0`. Identify any keys you want to delete and add them to `keys.txt`
