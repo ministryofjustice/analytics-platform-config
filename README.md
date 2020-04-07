@@ -70,3 +70,36 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
        git-crypt unlock
 
    If this fails, it might be because your gpg key requires a pass-phrase, but there is a problem with the pinentry-program. Check your gpg-agent daemon. I had to correct `~/.gnupg/gpg-agent.conf` to point to the correct `pinentry` binary, then killed the gpg-agent process and restarted it with: `gpg-agent --daemon /bin/sh`.
+
+### Remove gpg keys for old users
+
+Run `ls -alh .git-crypt/keys/default/0`. Identify any keys you want to delete and add them to `keys.txt`
+
+Run `remove-gpg-keys.sh` to delete the keys for a list of users. This will remove the key from git and delete any previous git history for that specific key. Users cannot rollback to previous commits to retrieve the key as the previous commit history is deleted.
+
+GPG keys
+# removed
+0BC40E3E6462918D96DD1A68D5A4BCE161AC7DC8.gpg Olivier
+0EA8A07F3B7A2DEFFC6A0C15A676D53809D8E9E5.gpg Josh
+3F4B80740A8B8F16846B1DB38BE0D7BE38C373EA.gpg Clive
+5910F958D8BBCE091D21352E7C54063FD401BB0A.gpg Mikael
+7A9BA8145FCA0BB3675EE374D6D0FEAADC33449C.gpg Shojul
+95D1D9337CFC1C0EB1EEE9FE78A7CD623E5F95BB.gpg Shojul
+B27CE54542E4BA0FD145A430BD12FA5814004DB8.gpg James
+F8E491B447659C8CA11C09A8A48B120FE8C81295.gpg Ravi
+7F6D3B095238754680D42F49886C4C04BB346D41.gpg Kerin
+2FCDF694D890566F24FDCE07A1FCACE175E38C1C.gpg Dan
+33656F68E1EE5B733EDCCD73F7F7899AA435E44F.gpg Lukasz
+F1E9B0177F6709B5E230257D4EBF0E610D34C21C.gpg Andy D
+0DBC860725A8932D1F13F587B1969E2CC64DAF89.gpg Dhiraj (wrong email)
+E3504125F0B6B5195F55C341510F6A3C7EFBFE1D.gpg David (old email)
+
+# added
+4F695620194C67495C8EFD2B9502AA070E5ED9A8.gpg David Read
+
+# same public key
+DFCB2DBA912C880D4CD9E143036B0A0B32275047.gpg Aldo
+009C7A26AD50D948CD79F3DE53AEAEC09EBAB932.gpg Dhiraj
+4A1EBAEBC0D7B1EB73C19D617D038E3B8AD145D9.gpg Andy L
+3882536CDAF2F100F615C48F57E38D4C4897ED56.gpg analytics-platform-tech@digital.justice.gov.uk
+89C83075908E8B349B0D26A90C16E8A4D0440FB4.gpg Robin
