@@ -17,6 +17,7 @@ done <$KEY_FILE
 git add .
 git commit -m "Remove gpg keys"
 
+KEY_FILE=$PWD/keys.txt
 while IFS= read -r key; do
 
     # Remove git history for this specific file path to prevent users accessing their old key
