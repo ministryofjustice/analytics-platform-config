@@ -14,7 +14,7 @@ while IFS= read -r key; do
         git add .
         git commit -m "Remove $key"
     fi
-    
+
     # Remove git history for this specific file path to prevent users accessing their old key
     git filter-branch -f --index-filter "git rm --cached --ignore-unmatch $GPG_KEY" HEAD 
 
