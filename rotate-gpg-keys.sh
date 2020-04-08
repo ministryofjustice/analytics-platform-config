@@ -1,6 +1,5 @@
 #!/bin/bash
 #
-# Script to remove GPG key from git-crypt
 #
 # It will re-initialize git-crypt for the repository and re-add all keys except
 # the one requested for removal.
