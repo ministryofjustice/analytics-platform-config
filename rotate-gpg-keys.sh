@@ -41,9 +41,7 @@ git crypt init
 for keyfilename in `ls $CURRENT_DIR/.git-crypt/keys/default/0/*gpg`; do
     basename=`basename $keyfilename`
     key=${basename%.*}
-    if [[ $key == $1 ]]; then
-        continue;
-    fi
+
     git crypt add-gpg-user $key
 done
 
