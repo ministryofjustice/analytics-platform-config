@@ -78,7 +78,7 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
  2. Run `remove-gpg-users.sh` to delete the keys for a list of users. This will remove the key from git and delete any previous git history for that specific key. Users cannot rollback to previous commits to retrieve the key as the previous commit history is deleted.
 
  GPG keys
- # removed
+ ### removed
  0BC40E3E6462918D96DD1A68D5A4BCE161AC7DC8.gpg Olivier
  0EA8A07F3B7A2DEFFC6A0C15A676D53809D8E9E5.gpg Josh
  3F4B80740A8B8F16846B1DB38BE0D7BE38C373EA.gpg Clive
@@ -94,10 +94,10 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
  0DBC860725A8932D1F13F587B1969E2CC64DAF89.gpg Dhiraj (wrong email)
  E3504125F0B6B5195F55C341510F6A3C7EFBFE1D.gpg David (old email)
 
- # added
+ ### added
  4F695620194C67495C8EFD2B9502AA070E5ED9A8.gpg David Read
 
- # same public key
+ ### same public key
  DFCB2DBA912C880D4CD9E143036B0A0B32275047.gpg Aldo
  009C7A26AD50D948CD79F3DE53AEAEC09EBAB932.gpg Dhiraj
  4A1EBAEBC0D7B1EB73C19D617D038E3B8AD145D9.gpg Andy L
