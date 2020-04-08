@@ -51,13 +51,13 @@ git crypt status | grep -v "not encrypted" > encrypted-files
 awk '{print $2}' encrypted-files | xargs rm
 git commit -a -m "Remove encrypted files"
 rm -rf .git-crypt
-git commit -a -m "Remove git-crypt"
+git commit -a -m "Delete the .git-crypt dir, containing the user 'keys' (the repo's old root key, encrypted for each user with their public gpg key)"
 rm -rf .git/git-crypt
 
-# Re-initialize git crypt
+# Create new repo root encryption key (does not encrypt files)
 git crypt init
 
-# Add existing users, except the
+# Add existing users
 for keyfilename in `ls $CURRENT_DIR/.git-crypt/keys/default/0/*gpg`; do
     basename=`basename $keyfilename`
     key=${basename%.*}
