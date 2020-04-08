@@ -108,6 +108,16 @@ You need to remove an old user's .gpg file from the repo, not just from master, 
 
 Having deleted old users in the previous section, you can now create a fresh root key. The "root key" is the symmetric encryption key that the encrypted files in this repo are encrypted with. The script will create the .gpg files for each user, which is the root key encrypted with a user's public key.
 
+1. Ensure you have all the current users' public GPG keys on your personal GPG keyring. If you don't you'll get an error adding them in a moment. The fingerprints of the GPG keys that you need are listed in the filenames:
+
+       $ ls .git-crypt/keys/default/0/
+   
+   The keys you have on your GPG keyring are listed:
+
+       $ gpg --list-keys
+       
+   To add someone, you need to ask them for their public GPG key (they are not stored in this repo) and then see the above section "Adding someone's gpg key to this repo".
+   
 1. Create a branch for this change.
 2. Rotate the root key by running `rotate-gpg-keys.sh`. The script will create a temp directory in `/tmp/`, re-initialise .git-crypt with the new root key, re-encrypt the files with the new master key and refresh the user .gpg files with the new root key.
 3. These changes will be commited back to the original repostory. So just run `git push` to your new branch and create a PR as normal. Every encrypted file is touched.
