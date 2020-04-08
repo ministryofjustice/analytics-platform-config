@@ -109,6 +109,7 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
  4. Switch to the master branch and run `rewrite-gpg-git-history.sh` to delete the users from the entire git history in all branches.
  5. Run `git push -all -force` to push these rewrite changes.
  6. Check that the commits have been removed by running e.g: 
+
        `git log -- .git-crypt/keys/default/0/0BC40E3E6462918D96DD1A68D5A4BCE161AC7DC8.gpg` to see the commits have been removed
 
        `git log -- .git-crypt/keys/default/0/4F695620194C67495C8EFD2B9502AA070E5ED9A8.gpg` to see the commits are still there for current users 
