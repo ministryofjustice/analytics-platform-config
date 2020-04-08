@@ -8,29 +8,10 @@
 # Removing a user will prevent them from reading future changes but they will
 # still have a copy of the data up to the point of their removal.
 #
-# Use:
-#  ./rotate-gpg-keys.sh [FULL_GPG_FINGERPRINT]
-#
-# E.g.:
-#  ./rotate-gpg-keys.sh 3BC18383F838C0B815B961480F8CAF5467D
-#
-# The script will create multiple commits to your repo. Feel free to squash them
-# all down to one.
-#
 # Based on https://github.com/AGWA/git-crypt/issues/47#issuecomment-212734882
 #
 #
 set -e
-
-if [ -z "$1" ]
-then
-    echo " Use:"
-    echo "  ./rotate-gpg-keys.sh [FULL_GPG_FINGERPRINT]"
-    echo ""
-    echo " E.g.:"
-    echo "  ./rotate-gpg-keys.sh 3BC18383F838C0B815B961480F8CAF5467D"
-    exit;
-fi
 
 TMPDIR=`mktemp -d`
 CURRENT_DIR=`git rev-parse --show-toplevel`
