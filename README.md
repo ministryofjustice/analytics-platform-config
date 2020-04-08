@@ -114,3 +114,10 @@ This repo contains secrets stored with git-crypt. These need decrypting before u
 
        `git log -- .git-crypt/keys/default/0/4F695620194C67495C8EFD2B9502AA070E5ED9A8.gpg` to see the commits are still there for current users 
 
+
+### Rotate gpg keys
+
+After deleting the keys mentioned above, you can choose to rotate the current users by running `rotate-gpg-keys.sh`. The script will create a temp directory in `/tmp/`, re-initialise .git-crypt and re-encrypt the files with the new master key. 
+
+These files will be commited back to the original repostory and just run `git push` to push your changes to your current working branch.
+ 
