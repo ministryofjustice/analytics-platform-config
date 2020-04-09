@@ -90,7 +90,7 @@ You need to remove an old user's .gpg file from the repo, not just from master, 
         DFCB2DBA912C880D4CD9E143036B0A0B32275047.gpg Aldo
         009C7A26AD50D948CD79F3DE53AEAEC09EBAB932.gpg Dhiraj
         4A1EBAEBC0D7B1EB73C19D617D038E3B8AD145D9.gpg Andy L
-        3882536CDAF2F100F615C48F57E38D4C4897ED56.gpg analytics-platform-tech@digital.justice.gov.uk 
+        2480EC66A51899473BE4CA4B6DC10A52603E7A8E.gpg analytics-platform-tech@digital.justice.gov.uk 
         89C83075908E8B349B0D26A90C16E8A4D0440FB4.gpg Robin
 
  2. Make sure you're on the `master` branch. Run `remove-gpg-users.sh` to delete the keys for a list of users. Make sure bfg is installed on your machine `brew install bfg`. This will remove the keys from all branches, folders commits.

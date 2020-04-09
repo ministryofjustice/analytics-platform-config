@@ -13,7 +13,7 @@ while IFS= read -r key; do
     
 done <$KEY_FILE 
 
-cd analytics-platform-config.git
+cd ../analytics-platform-config.git
 git reflog expire --expire=now --all && git gc --prune=now --aggressive
 git push
 
