@@ -13,4 +13,5 @@ done <$KEY_FILE
 
 git add .
 git commit -m "Remove gpg keys"
+git push
 
