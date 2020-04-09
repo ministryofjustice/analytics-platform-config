@@ -78,7 +78,7 @@ To remove access to users you need to:
 1. Remove a user's .gpg file
 2. Rotate the root key
 
-#### Remove a user's .gpg file
+#### Remove a user's .gpg file (Run this in the master branch)
 
 You need to remove an old user's .gpg file from the repo, not just from master, but all previous commits, including branches. This prevents them from checking out this repo, getting their .gpg file, which they can decrypt to give them the repo's (symmetric) root key, which could decrypt the rest of the repo.
 
@@ -93,7 +93,7 @@ You need to remove an old user's .gpg file from the repo, not just from master, 
         3882536CDAF2F100F615C48F57E38D4C4897ED56.gpg analytics-platform-tech@digital.justice.gov.uk 
         89C83075908E8B349B0D26A90C16E8A4D0440FB4.gpg Robin
 
- 2. Run `remove-gpg-users.sh` to delete the keys for a list of users. Make sure bfg is installed on your machine `brew install bfg`. This will remove the keys from all branches, folders commits.
+ 2. Make sure you're on the `master` branch. Run `remove-gpg-users.sh` to delete the keys for a list of users. Make sure bfg is installed on your machine `brew install bfg`. This will remove the keys from all branches, folders commits.
  3. Check that the commits have been removed by running e.g: 
 
        `git log -- .git-crypt/keys/default/0/0BC40E3E6462918D96DD1A68D5A4BCE161AC7DC8.gpg` to see the commits have been removed for old users
