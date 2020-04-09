@@ -2,6 +2,8 @@
 
 set -ex
 
+# Clone a mirror of the repository
+git clone --mirror git@github.com:ministryofjustice/analytics-platform-config.git ../analytics-platform-config.git
 KEY_FILE=$PWD/keys.txt
 
 while IFS= read -r key; do

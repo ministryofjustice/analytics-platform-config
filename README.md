@@ -93,7 +93,7 @@ You need to remove an old user's .gpg file from the repo, not just from master, 
         3882536CDAF2F100F615C48F57E38D4C4897ED56.gpg analytics-platform-tech@digital.justice.gov.uk 
         89C83075908E8B349B0D26A90C16E8A4D0440FB4.gpg Robin
 
- 2. Run `remove-gpg-users.sh` to delete the keys for a list of users. 
+ 2. Run `remove-gpg-users.sh` to delete the keys for a list of users. Make sure bfg is installed on your machine `brew install bfg`. This will remove the keys from all branches and all folders.
  3. Create a PR to remove the users. Once this is approved move to Step 4.
  4. Switch to the **master** branch and run `rewrite-gpg-git-history.sh` to delete the users from the entire git history in all branches. (You can't actually rewrite all the history from a branch - the PR created in the previous step was just to get peer review.)
  5. Run `git push -all -force` to push these rewrite changes.
