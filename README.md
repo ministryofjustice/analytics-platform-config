@@ -84,6 +84,7 @@ To remove access to users you need to:
 
 1. Remove a user's .gpg file
 2. Rotate the root key
+3. Supply Concourse with the new key
 
 #### Remove a user's .gpg file (Run this in the master branch)
 
@@ -131,3 +132,15 @@ Having deleted old users in the previous section, you must now also create a fre
 
        mv analytics-platform-config analytics-platform-config.bak
        git clone git@github.com:ministryofjustice/analytics-platform-config
+
+
+#### Supply Concourse with the new key
+
+Concourse needs access to this config, and rotating the root key will have locked it out until you supply the new one.
+
+1. Get the hash of the new key:
+
+    base64 < .git/git-crypt/keys/default
+
+2. Replace the value in 4 places in this repo (search for `gitcrypt` & `gitCrypt`)
+3. Re-deploy charts: `concourse-org-pipeline` & `concourse-admin-team`
