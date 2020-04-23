@@ -86,6 +86,8 @@ To remove access to users you need to:
 2. Rotate the root key
 3. Supply Concourse with the new key
 
+Please run the steps below in the git crypt repo e.g `analytics-platform-config` or `analytics-platform-data-engineering-ops` and specify this name in the `GIT_REPO` variable.
+
 #### Remove a user's .gpg file (Run this in the master branch)
 
 You need to remove an old user's .gpg file from the repo, not just from master, but all previous commits, including branches. This prevents them from checking out this repo, getting their .gpg file, which they can decrypt to give them the repo's (symmetric) root key, which could decrypt the rest of the repo.

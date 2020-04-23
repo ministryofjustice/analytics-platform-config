@@ -13,6 +13,10 @@
 #
 set -e
 
+# Specify the git repo to rotate gpg keys
+GIT_REPO="../analytics-platform-data-engineering-ops"
+cd $GIT_REPO
+
 TMPDIR=`mktemp -d`
 CURRENT_DIR=`git rev-parse --show-toplevel`
 BASENAME=$(basename `pwd`)
