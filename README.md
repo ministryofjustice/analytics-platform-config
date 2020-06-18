@@ -26,4 +26,23 @@ Concourse needs access to this config, and rotating the root key will have locke
     base64 < .git/git-crypt/keys/default
 
 2. Replace the value in 4 places in this repo (search for `gitcrypt` & `gitCrypt`)
-3. Re-deploy charts: `concourse-org-pipeline` & `concourse-admin-team`
+3. Re-deploy charts: [concourse-org-pipeline](https://github.com/ministryofjustice/analytics-platform-helm-charts/tree/master/charts/concourse-org-pipeline) & [concourse-admin-team](https://github.com/ministryofjustice/analytics-platform-helm-charts/tree/master/charts/concourse-admin-team). Example commands:
+
+       # dev initially
+       ENV=dev
+       export KUBECONFIG=~/.kube/$ENV.mojanalytics.xyz-oidc  # or however you switch to the dev cluster
+       cd ~/ap  # or wherever your repos are checked out
+
+       helm upgrade --install org-pipeline-moj-analytical-services mojanalytics/concourse-org-pipeline --values    analytics-platform-config/chart-env-config/$ENV/concourse-org-pipeline.yaml
+       helm history org-pipeline-moj-analytical-services  # check it looks right
+
+       helm upgrade --install concourse-admin-team mojanalytics/concourse-admin-team  --values analytics-platform-config/   chart-env-config/$ENV/concourse-admin-team.yaml
+       helm history concourse-admin-team  # check it looks right
+
+       # Now repeat the above, but with ENV=alpha
+
+       # Monitor the next few builds:
+       # (See https://github.com/ministryofjustice/analytics-platform/wiki/Concourse#fly-tool )
+       fly -t mojap-alpha builds -c 5
+
+       # Run a test build, e.g. https://concourse.services.alpha.mojanalytics.xyz/teams/main/pipelines/kpi-s3-proxy
