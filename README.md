@@ -1,6 +1,9 @@
 # analytics-platform-config
 
-Encrypted configuration. Files can be decrypted by following [instructions below](#git-crypt).
+All Kubernetes resources are managed as Helm charts, the Kubernetes package manager. Analytics-specific charts are served via our Helm repository - source code is in the ministryofjustice/analytics-platform-helm-charts repository, and chart values for each environment are stored in this reposirory
+
+
+Encrypted configuration. Files can be decrypted by following [Git-crypt instructions below](#git-crypt).
 
 ## Repository structure
 
@@ -8,6 +11,40 @@ Each environment has its own set of configuration files under the [`/chart-env-c
 
 Most of these files contain the configuration (helm values) for the corresponding helm release, many of these helm charts are maintained by us (see [`ministryofjustice/analytics-platform-helm-charts` repository](https://github.com/ministryofjustice/analytics-platform-helm-charts)).
 
+
+## Usage 
+
+**NOTE** helm is run from your workstation. There is no CI/CD for this repo. 
+
+### Install helm2 
+
+- Install helm v2 as per (Install Helm3 & Helm2 on macOS)[https://joachim8675309.medium.com/install-helm3-helm2-on-macos-d65f61509799]
+
+### Install and configure kubectl
+
+- need kubectl installed and configured and working on your workstation. if the alpha cluster alpha.mojanalytics.xyz is config in a file called say alpha specify:
+```
+export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/alpha
+kubectl config use-context alpha.mojanalytics.xyz
+```
+
+### Modify chart config 
+
+- cd to chart-env-config/alpha and modify the appropriate yaml file. For eample filebeat-node.yml
+
+### Run helm
+
+- setup and dry run helm2 to upgrade chart. For example the filebeats chart:
+```
+helm2 init --upgrade
+helm2 repo add elastic https://helm.elastic.co
+helm2 upgrade --debug filebeats-node elastic/filebeat --version 7.10.0 -f ./filebeat-node.yaml --namespace kube-system --install --dry-run
+```
+
+-finally run 
+```
+helm2 upgrade --debug filebeats-node elastic/filebeat --version 7.10.0 -f ./filebeat-node.yaml --namespace kube-system --install --dry-run
+```
 
 ## Git-crypt
 
